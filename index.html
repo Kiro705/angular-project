@@ -4,7 +4,10 @@
         <title>ngClassifieds</title>
     </head>
     <body ng-app="ngClassifieds" ng-controller="classifiedsCtrl">
-        <h1>{{ name }}</h1>
+
+        <input type="text" placeholder="Enter your name" ng-model="nhjame">
+        <h1>{{ name.first + '!'}}</h1>
+
         <script src="node_modules/angular/angular.js"></script>
         <script src="scripts/app.js"></script>
         <script src="components/classifieds.ctr.js"></script>

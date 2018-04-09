@@ -4,6 +4,9 @@
     angular
     .module('ngClassifieds')
     .controller('classifiedsCtrl', function($scope){
-        $scope.name = 'Jackson'
+        $scope.name = {
+            first: 'Olivia',
+            last: 'Sui'
+        }
     })
 })();
