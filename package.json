@@ -1,7 +1,7 @@
 {
   "name": "angularproject",
   "version": "1.0.0",
-  "description": "",
+  "description": "A project for me to learn Angular.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,7 +13,9 @@
   "author": "Jackson",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.6.9",
+    "angular": "^1.5.10",
+    "angular-animate": "^1.5.10",
+    "angular-aria": "^1.5.10",
     "angular-material": "^1.1.8",
     "mdi": "^2.2.43"
   }
