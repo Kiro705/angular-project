@@ -1,3 +1,21 @@
 button .material-icons {
     margin-top: -15px;
 }
+
+.classified.ng-enter, .classified.ng-move {
+    transition: 1.5s all;
+    opacity: 0;
+}
+
+.classified.ng-enter.ng-enter-active, .classified.ng-move.ng-move-active {
+    opacity: 1;
+}
+
+.classified.ng-leave {
+    animation: 1.0s fade_classified;
+}
+
+@keyframes fade_classified {
+    from { opacity: 1;}
+    to { opacity: 0;}
+}
