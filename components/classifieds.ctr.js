@@ -7,6 +7,7 @@
         classifiedsFactory.getClassifieds()
         .then(function(classifieds){
           $scope.classifieds = classifieds.data
+          $scope.categories = getCategories($scope.classifieds)
         })
 
         const contact = {
@@ -68,5 +69,16 @@
               .hideDelay(35000)
           )
         }
+
+        function getCategories(classifieds){
+          const categories = []
+          angular.forEach(classifieds, function(item){
+            angular.forEach(item.categories, function(category){
+              categories.push(category)
+            })
+          })
+          return _.uniq(categories)
+        }
+
     })
 })();
