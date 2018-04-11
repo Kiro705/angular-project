@@ -3,7 +3,7 @@
 
     angular
     .module('ngClassifieds')
-    .controller('classifiedsCtrl', function($scope, $http, classifiedsFactory, $mdSidenav){
+    .controller('classifiedsCtrl', function($scope, $http, classifiedsFactory, $mdSidenav, $mdToast){
         classifiedsFactory.getClassifieds()
         .then(function(classifieds){
           $scope.classifieds = classifieds.data
@@ -29,6 +29,12 @@
             $scope.classifieds.unshift(newClassified)
             $mdSidenav('left').close()
             $scope.newClassified = null
+            $mdToast.show(
+              $mdToast.simple()
+                .content('Listing Saved!')
+                .position('top, right')
+                .hideDelay(35000)
+            )
           }
         }
     })
