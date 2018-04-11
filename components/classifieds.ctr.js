@@ -9,6 +9,12 @@
           $scope.classifieds = classifieds.data
         })
 
+        const contact = {
+          name: 'Jackson',
+          phone: '(123) 456-7890',
+          email: 'email@gmail.com'
+        }
+
         $scope.openSidebar = function(){
           $mdSidenav('left').open()
         }
@@ -18,8 +24,12 @@
         }
 
         $scope.saveClassified = function(newClassified){
-          $scope.classifieds.unshift(newClassified)
-          $mdSidenav('left').close()
+          if(newClassified){
+            newClassified.contact = contact
+            $scope.classifieds.unshift(newClassified)
+            $mdSidenav('left').close()
+            $scope.newClassified = null
+          }
         }
     })
 })();
