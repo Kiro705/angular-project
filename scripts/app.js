@@ -1,7 +1,7 @@
 angular.module('ngClassifieds', ["ngMaterial"])
     .config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
-            .primaryPalette('teal')
+            .primaryPalette('amber')
             .accentPalette('orange')
     })
     .directive('helloWorld', function(){
