@@ -1,11 +1,13 @@
-angular.module('ngClassifieds', ["ngMaterial"])
-    .config(function($mdThemingProvider) {
+angular.module('ngClassifieds', ['ngMaterial', 'ui.router'])
+    .config(function($mdThemingProvider, $stateProvider) {
         $mdThemingProvider.theme('default')
             .primaryPalette('amber')
             .accentPalette('orange')
-    })
-    .directive('helloWorld', function(){
-        return {
-            template: '<h1>Hello, world!!!</h1>'
-        }
+
+        $stateProvider
+            .state('classifieds', {
+                url: '/classifieds',
+                templateUrl: 'components/classifieds/classifieds.tpl.html',
+                controller: 'classifiedsCtrl as vm',
+            })
     })
