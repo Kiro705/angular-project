@@ -3,11 +3,12 @@
 
     angular
     .module('ngClassifieds')
-    .controller('classifiedsCtrl', function($scope, $http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog){
+    .controller('classifiedsCtrl', function($scope, $state, $http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog){
         const vm = this
 
+        $scope.$on
+
         vm.openSidebar = openSidebar
-        vm.closeSidebar = closeSidebar
         vm.saveClassified = saveClassified
         vm.editClassified = editClassified
         vm.saveEdit = saveEdit
@@ -18,24 +19,20 @@
         vm.newClassified
         vm.editing
 
+        $scope.$on('newClassified', function(event, classified){
+          classified.id = vm.classifieds.length + 1
+          vm.classifieds.unshift(classified)
+          showToast('Listing saved!')
+        })
+
         classifiedsFactory.getClassifieds()
         .then(function(classifieds){
           vm.classifieds = classifieds.data
           vm.categories = getCategories(vm.classifieds)
         })
 
-        const contact = {
-          name: 'Jackson',
-          phone: '(123) 456-7890',
-          email: 'email@gmail.com'
-        }
-
         function openSidebar(){
-          $mdSidenav('left').open()
-        }
-
-        function closeSidebar(){
-          $mdSidenav('left').close()
+          $state.go('classifieds.new')
         }
 
         function saveClassified(newClassified){
