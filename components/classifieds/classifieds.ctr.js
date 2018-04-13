@@ -12,10 +12,16 @@
         vm.saveEdit = saveEdit
         vm.deleteClassified = deleteClassified
 
-        vm.classifieds
+        vm.classifieds = classifiedsFactory.classifiedsList
         vm.categories
         vm.newClassified
         vm.editing
+
+        $scope.$watch('vm.classifieds.length', function(length){
+          if(length > 0){
+            vm.categories = getCategories(vm.classifieds)
+          }
+        })
 
         $scope.$on('newClassified', function(event, classified){
           classified.id = vm.classifieds.length + 1
@@ -25,12 +31,6 @@
 
         $scope.$on('savingClassified', function(event){
           showToast('Edit saved!')
-        })
-
-        classifiedsFactory.getClassifieds()
-        .then(function(classifieds){
-          vm.classifieds = classifieds.data
-          vm.categories = getCategories(vm.classifieds)
         })
 
         function openSidebar(){
@@ -91,6 +91,5 @@
           })
           return _.uniq(categories)
         }
-
     })
 })();

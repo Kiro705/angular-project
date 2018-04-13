@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('ngClassifieds')
-        .controller('editClassifiedsCtrl', function($scope, $state, $mdSidenav, $timeout, $mdDialog, classifiedsFactory){
+        .controller('editClassifiedsCtrl', function($scope, $state, $mdSidenav, $timeout){
             const vm = this
             vm.closeSidebar = closeSidebar
             vm.saveEdit = saveEdit

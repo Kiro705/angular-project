@@ -3,10 +3,25 @@
 
     angular.module('ngClassifieds')
     .factory('classifiedsFactory', function($http) {
-        function getClassifieds() {
-            return $http.get('data/classifieds.json')
-        }
+        
+        // Initialize Cloud Firestore through Firebase
+        const db = firebase.firestore()
+        let classifiedsList = []
 
-        return {getClassifieds}
+        db.collection('classifieds').get()
+        .then(classifieds => {
+            classifieds.forEach(classified => {
+                let temp = classified.data()
+                classifiedsList.push(temp)
+            })
+        })
+        .then(() => {
+            return {classifiedsList}
+        })
+        .catch(function(error) {
+            return {classifiedsList: ('Error getting documents:', error)}
+        })
+
+        return {classifiedsList}
     })
 })()

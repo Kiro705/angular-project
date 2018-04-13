@@ -3,7 +3,7 @@ button .material-icons {
 }
 
 .classified.ng-enter, .classified.ng-move {
-    transition: 1.5s all;
+    transition: 0.7s all;
     opacity: 0;
 }
 
@@ -12,7 +12,7 @@ button .material-icons {
 }
 
 .classified.ng-leave {
-    animation: 1.0s fade_classified;
+    animation: 0.7s fade_classified;
 }
 
 @keyframes fade_classified {

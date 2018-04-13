@@ -1,5 +1,6 @@
 angular.module('ngClassifieds', ['ngMaterial', 'ui.router'])
     .config(function($mdThemingProvider, $stateProvider) {
+
         $mdThemingProvider.theme('default')
             .primaryPalette('amber')
             .accentPalette('orange')
