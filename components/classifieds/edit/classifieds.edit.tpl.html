@@ -22,7 +22,7 @@
                 <input type="text" ng-model="vm.classified.image" id="image">
             </md-input-container>
             <div layout="row">
-                <md-button class="md-primary" ng-click="vm.saveEdit()">Save Edit</md-button>
+                <md-button class="md-primary" ng-click="vm.saveEdit(vm.classified)">Save Edit</md-button>
                 <md-button class="md-warn" ng-click="vm.closeSidebar()">Cancle</md-button>
             </div>
             <pre>{{newClassified | json}}</pre>

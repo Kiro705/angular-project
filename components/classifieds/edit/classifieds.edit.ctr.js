@@ -25,8 +25,8 @@
                 vm.sidenavOpen = false
             }
 
-            function saveEdit(){
-                    $scope.$emit('savingClassified')
+            function saveEdit(editedClassified){
+                    $scope.$emit('savingClassified', editedClassified)
                     vm.sidenavOpen = false
             }
         })
