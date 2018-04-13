@@ -6,8 +6,6 @@
     .controller('classifiedsCtrl', function($scope, $state, $http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog){
         const vm = this
 
-        $scope.$on
-
         vm.openSidebar = openSidebar
         vm.saveClassified = saveClassified
         vm.editClassified = editClassified
@@ -23,6 +21,10 @@
           classified.id = vm.classifieds.length + 1
           vm.classifieds.unshift(classified)
           showToast('Listing saved!')
+        })
+
+        $scope.$on('savingClassified', function(event){
+          showToast('Edit saved!')
         })
 
         classifiedsFactory.getClassifieds()
@@ -47,9 +49,7 @@
         }
 
         function editClassified(classifiedForEditing) {
-          vm.editing = true
-          vm.openSidebar()
-          vm.newClassified = classifiedForEditing
+          $state.go('classifieds.edit', {id: classifiedForEditing.id, classified: classifiedForEditing})
         }
 
         function saveEdit() {
