@@ -36,5 +36,12 @@
 <ui-view></ui-view>
 
 <md-content>
-    <classified-card class="md-padding" layout="row" layout-wrap></classified-card>
+    <classified-card 
+        classifieds="vm.classifieds"
+        classifieds-filter="classifiedsFilter"
+        category="category"
+        class="md-padding" 
+        layout="row" 
+        layout-wrap>
+    </classified-card>
 </md-content>

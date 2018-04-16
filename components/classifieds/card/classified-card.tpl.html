@@ -1,4 +1,4 @@
-<md-card ng-repeat="classified in vm.classifieds | filter: classifiedsFilter | filter: category" flex="30" class="classified">
+<md-card ng-repeat="classified in classifieds | filter: classifiedsFilter | filter: category" flex="30" class="classified">
     <img ng-src="{{classified.image}}" alt="">
     <md-card-content>
         <div class="classified-info" ng-show="!showContact">

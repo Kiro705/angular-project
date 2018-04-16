@@ -9,9 +9,6 @@
 
         vm.openSidebar = openSidebar
         vm.saveClassified = saveClassified
-        vm.editClassified = editClassified
-        vm.deleteClassified = deleteClassified
-
         vm.classifieds = classifiedsFactory.classifiedsList
         vm.categories
         vm.newClassified
@@ -65,35 +62,6 @@
             vm.newClassified = null
             showToast('Listing Saved!')
           }
-        }
-
-        function editClassified(classifiedForEditing) {
-          $state.go('classifieds.edit', {id: classifiedForEditing.id, classified: classifiedForEditing})
-        }
-
-        function deleteClassified(event, targetClassified) {
-          const confirm = $mdDialog.confirm()
-            .title('Are you sure you want to delete ' + targetClassified.title + '?')
-            .ok('Yes')
-            .cancel('No')
-            .targetEvent(event) 
-          $mdDialog.show(confirm).then(function(){
-            const index = vm.classifieds.indexOf(targetClassified)
-            vm.classifieds.splice(index, 1)
-            db.collection('classifieds').where('id', '==', targetClassified.id)
-            .get().then((data) => {
-              data.forEach(singleClassified => {
-                db.collection('classifieds').doc(singleClassified.id).delete()
-                  .then(() => showToast(targetClassified.title + ' successfully deleted!'))
-                  .catch((error) => {
-                    showToast('Error deleting ' + targetClassified.title)
-                    console.error(error)
-                  })
-              })
-            })
-          }, function() {
-            showToast(targetClassified.title + ' was not deleted!')
-          })
         }
 
         function showToast(message){
