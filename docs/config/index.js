@@ -12,6 +12,10 @@ module.exports = new Package('myDoc', [
     require('dgeni-packages/nunjucks')
 ])
 
+.processor(require('./processors/index-page'))
+.processor(require('./processors/guide-data'))
+.processor(require('./processors/api-data'))
+
 .config(function(log, readFilesProcessor, writeFilesProcessor) {
 
     // Set the log level to 'info', switch to 'debug' when troubleshooting
@@ -22,7 +26,7 @@ module.exports = new Package('myDoc', [
 
     // Specify our source files that we want to extract
     readFilesProcessor.sourceFiles = [
-        { include: 'src/app/**/**/*.js', basePath: 'src/app' }, // All of our application files
+        { include: 'components/classifieds/*.js', basePath: 'components/classifieds' }, // All of our application files
 
         // Our static Markdown documents
         // We are specifying the path and telling Dgeni to use the ngdocFileReader

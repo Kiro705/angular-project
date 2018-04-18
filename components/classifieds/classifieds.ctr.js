@@ -1,6 +1,13 @@
 (function(){
     'use strict';
 
+    /**
+     * @ngdoc type
+     * @module classifieds.ctr
+     * @name classifiedsCtrl
+     * @description Classifieds controller
+     */
+
     angular
     .module('ngClassifieds')
     .controller('classifiedsCtrl', function($scope, $state, $http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog){
@@ -49,12 +56,21 @@
             })
         })
 
+        /**
+         * @ngdoc method
+         * @name classifiedsCtrl#openSidebar
+         * @description opens the sidebar by routing to #/classifieds/new
+         */
         function openSidebar(){
           $state.go('classifieds.new')
         }
 
+        /**
+         * @ngdoc method
+         * @name classifiedsCtrl#saveClassified
+         * @param {object} newClassified Saves the classified in local vm.classifieds and shows toast to confirm.
+         */
         function saveClassified(newClassified){
-          console.log(newClassified)
           if(newClassified){
             newClassified.contact = contact
             vm.classifieds.unshift(newClassified)
@@ -64,6 +80,11 @@
           }
         }
 
+        /**
+         * @ngdoc method
+         * @name classifiedsCtrl#showToast
+         * @param {string} message Shows a toast with the message.
+         */
         function showToast(message){
           $mdToast.show(
             $mdToast.simple()
@@ -73,6 +94,12 @@
           )
         }
 
+        /**
+         * @ngdoc method
+         * @name classifiedsCtrl#getCategories
+         * @param {array} classifieds Recieves an array of classifieds with nested categories.
+         * @return {array} Returns an array of all unique categories.
+         */
         function getCategories(classifieds){
           const categories = []
           angular.forEach(classifieds, function(item){
