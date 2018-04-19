@@ -1,6 +1,13 @@
 (function() {
     "use strict";
 
+    /**
+     * @ngdoc service
+     * @name classifiedsFactory
+     * @module ngClassifieds
+     *
+     * @description Provides connection to firebase firestore and loads the classifieds.
+     */
     angular.module('ngClassifieds')
     .factory('classifiedsFactory', function($http) {
         

@@ -1,3 +1,16 @@
+/**
+ *
+ * @ngdoc module
+ * @name ngClassifieds
+ *
+ * @requires ui.router 
+ * @requires ngMaterial
+ *
+ * @description
+ *
+ * This is the Classifieds main module. It includes all of our components for the app.
+ *
+ **/
 angular.module('ngClassifieds', ['ngMaterial', 'ui.router'])
     .config(function($mdThemingProvider, $stateProvider) {
 

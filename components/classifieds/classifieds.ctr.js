@@ -3,7 +3,7 @@
 
     /**
      * @ngdoc type
-     * @module classifieds.ctr
+     * @module ngClassifieds
      * @name classifiedsCtrl
      * @description Classifieds controller
      */
@@ -21,6 +21,11 @@
         vm.newClassified
         vm.editing
 
+        /**
+         * @ngdoc property
+         * @name classifiedsCtrl#classifieds$watch
+         * @description Watches for the classifieds to be loaded then collects the unique categories
+         */
         $scope.$watch('vm.classifieds.length', function(length){
           if(length > 0){
             console.log(vm.classifieds)
@@ -28,6 +33,13 @@
           }
         })
 
+        /**
+         * @ngdoc event
+         * @name classifiedsCtrl#newCloassified$on
+         * @param {Object} event The event from the broadcast
+         * @param {Object} classifed The new classified to be saved
+         * @description On a 'newClassified' broadcast, will save that classified in firestore
+         */
         $scope.$on('newClassified', function(event, classified){
           classified.id = vm.classifieds.length + 1
           db.collection('classifieds').add(classified)
@@ -40,6 +52,13 @@
           })
         })
 
+        /**
+         * @ngdoc event
+         * @name classifiedsCtrl#savingClassified$on
+         * @param {Object} event The event from the broadcast
+         * @param {Object} editedClassified The edited classified to be saved
+         * @description On a 'savingClassified' broadcast, will update the edited classified in firestore
+         */
         $scope.$on('savingClassified', function(event, editedClassified){
           //Removes $$hashKey to avoid duplicates in database
           delete editedClassified.$$hashKey

@@ -17,12 +17,12 @@
 <div class="filters" layout="row" layout-align="center" ng-show="vm.showFilter">
 
     <md-input-container>
-        <lable>Search</lable>
+        <label>Search</label>
         <input type="text" ng-model="classifiedsFilter" aria-label="true">
     </md-input-container>
 
     <md-input-container>
-        <lable>Category</lable>
+        <label>Category</label>
         <md-select ng-model="category" aria-label="true">
             <md-option ng-repeat="category in vm.categories" value="{{ category }}">{{category}}</md-option>
         </md-select>

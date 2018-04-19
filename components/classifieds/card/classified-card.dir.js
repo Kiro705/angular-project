@@ -2,6 +2,13 @@
 
     'use strict';
 
+    /**
+     * @ngdoc directive
+     * @name classifiedCard
+     * @module ngClassifieds
+     *
+     * @description Card directive for individual classified cards.
+     **/
     angular.module('ngClassifieds')
         .directive('classifiedCard', function() {
             return {

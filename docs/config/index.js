@@ -26,7 +26,7 @@ module.exports = new Package('myDoc', [
 
     // Specify our source files that we want to extract
     readFilesProcessor.sourceFiles = [
-        { include: 'components/classifieds/*.js', basePath: 'components/classifieds' }, // All of our application files
+        { include: 'components/classifieds/**/*.js', basePath: 'components/classifieds' }, // All of our application files
 
         // Our static Markdown documents
         // We are specifying the path and telling Dgeni to use the ngdocFileReader
